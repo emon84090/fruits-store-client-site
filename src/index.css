@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.header-menu ul li {
+    display: inline-block;
+    margin: 0px 10px;
+}
