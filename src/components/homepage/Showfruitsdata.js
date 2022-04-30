@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Showfruitsdata = ({ data }) => {
-    const { name, price, image, qty, discription, supply_name, supply_image } = data;
+    const { name, price, image, qty, discription, supply_name, supply_image, _id } = data;
     return (
         <>
             <div className="fruits-item shadow-xl rounded-md p-5 ">
@@ -32,7 +33,9 @@ const Showfruitsdata = ({ data }) => {
                     <p className='mt-1 text-gray-600 text-md'>{discription}</p>
                 </div>
                 <div className="manage-btn  mt-3">
-                    <button className="h-10 px-5 font-semibold text-indigo-100 transition-colors duration-150 bg-yellow-500 rounded-full focus:shadow-outline hover:bg-yellow-600">manage</button>
+                    <Link to={`/inventory/${_id}`}>
+                        <button className="h-10 px-5 font-semibold text-indigo-100 transition-colors duration-150 bg-yellow-500 rounded-full focus:shadow-outline hover:bg-yellow-600">manage</button>
+                    </Link>
                 </div>
 
             </div>
