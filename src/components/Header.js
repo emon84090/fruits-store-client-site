@@ -37,6 +37,12 @@ const Header = () => {
                                     </NavLink></li>
                                     <li><NavLink
                                         className={({ isActive }) => (`font-semibold text-md capitalize ${isActive ? "text-yellow-500" : ""}`)}
+                                        to='/managefruits'
+                                    >
+                                        Manage items
+                                    </NavLink></li>
+                                    <li><NavLink
+                                        className={({ isActive }) => (`font-semibold text-md capitalize ${isActive ? "text-yellow-500" : ""}`)}
                                         to='/home'
                                     >
                                         Services

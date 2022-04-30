@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './components/user-authentication/Login';
 import Registration from './components/user-authentication/Registration';
 import Singleinventory from './components/Singleinventory';
+import Managefruits from './components/Managefruits';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/registration' element={<Registration></Registration>}></Route>
 
         <Route path='/inventory/:id' element={<Singleinventory></Singleinventory>}></Route>
+        <Route path='/managefruits' element={<Managefruits></Managefruits>}></Route>
       </Routes>
 
 
