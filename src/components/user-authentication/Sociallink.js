@@ -3,7 +3,7 @@ import React from 'react';
 const Sociallink = () => {
     return (
         <>
-            <div className="social-login-system px-1 md:px-10">
+            <div className="social-login-system px-3 md:px-10">
                 <div className="or flex items-center">
                     <div className='w-1/2 h-px bg-gray-300'></div>
                     <span className='text-gray-400 px-2'>or</span>

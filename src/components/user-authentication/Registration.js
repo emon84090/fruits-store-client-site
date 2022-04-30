@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Sociallink from './Sociallink';
 
 const Registration = () => {
@@ -8,10 +9,10 @@ const Registration = () => {
     return (
         <>
 
-            <section className='pt-32 bg-yellow-400 min-h-screen py-5'>
+            <section className='pt-32 bg-yellow-400 min-h-screen py-10'>
                 <div className="container mx-auto">
-                    <div className="login-all-content grid grid-cols-2 gap-5">
-                        <div className="login animate__animated animate__fadeInLeft max-w-md mx-auto bg-white w-full py-10 rounded-md">
+                    <div className="login-all-content grid px-3 grid-cols-1 md:grid-cols-2 gap-5">
+                        <div className="login order-3 md:order-2 animate__animated animate__fadeInLeft max-w-md mx-auto bg-white w-full py-10 rounded-md">
 
                             <div className="login-content pb-4  flex items-center justify-center flex-col   px-1 md:px-10">
                                 <div className="logo">
@@ -45,12 +46,12 @@ const Registration = () => {
                                         <button type='submit' className='mt-3 disabled:bg-opacity-75 disabled:cursor-not-allowed cursor-pointer font-semibold w-full h-12 outline-none rounded-sm placeholder:text-sm bg-yellow-400   text-white'>Sign Up</button>
                                     </div>
 
-
+                                    <div className="acount-link mt-2 text-center">
+                                        <Link to="/login" className='text-yellow-500 font-semibold'>Already have acount?</Link>
+                                    </div>
                                 </form>
 
                             </div>
-
-
 
                             <Sociallink></Sociallink>
 
@@ -58,7 +59,7 @@ const Registration = () => {
 
 
 
-                        <div className="login-right">
+                        <div className="login-right order-2">
                             <img className=' object-cover' src="https://i.ibb.co/2Z4fKNt/Screenshot-13-removebg-preview.png" alt="" />
 
                         </div>
