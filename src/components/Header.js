@@ -9,7 +9,7 @@ const Header = () => {
     return (
         <>
             <div onClick={() => setMenu(!menu)} className="menues md:hidden fixed flex items-center z-10 top-0 w-full h-14 bg-white">
-                <i class='bx bx-menu text-xl ml-2'></i>
+                <i className='bx bx-menu text-xl ml-2'></i>
             </div>
             <header className={`header w-72 ${!menu ? '-left-72' : '-left-0'} md:left-0 h-full md:h-max fixed top-0 md:w-full  animate__animated animate__fadeInDown bg-white py-7  p-3 z-20`}>
                 <div className="container mx-auto">
