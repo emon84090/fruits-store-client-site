@@ -147,7 +147,7 @@ const Registration = () => {
                                     </div>
 
                                     <div className="acount-link mt-2 text-center">
-                                        <Link to="/registration" className='text-yellow-500 font-semibold'>Already have acount?</Link>
+                                        <Link to="/login" className='text-yellow-500 font-semibold'>Already have acount?</Link>
                                     </div>
                                 </form>
 

@@ -1,8 +1,60 @@
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Alert from '../Alert';
+import auth from './firebaseconfig';
 import Sociallink from './Sociallink';
 
 const Login = () => {
     const [pshowicon, setpShowicon] = useState(false);
+    const [loginmail, setloginmail] = useState();
+    const [loginpassword, setloginpassword] = useState();
+    const [spinner, setspinner] = useState(false);
+
+
+    const [fpassword, fsetpassword] = useState();
+    const [forget, setforget] = useState(false);
+
+    const forgetpassword = (e) => {
+        fsetpassword(e.target.value)
+    }
+
+    const loginemail = (e) => {
+        setloginmail(e.target.value)
+    }
+    const passwordlogin = (e) => {
+        setloginpassword(e.target.value)
+    }
+
+
+    const loginForm = async (e) => {
+        e.preventDefault();
+        setspinner(true);
+        try {
+            const { user } = await signInWithEmailAndPassword(auth, loginmail, loginpassword);
+            setspinner(false);
+            Alert('Login success', 'success');
+        } catch (err) {
+            setspinner(false);
+            Alert(`${err.message}`, 'error')
+        }
+
+    }
+
+    const forgetPasswordbtn = async (e) => {
+
+        try {
+            const result = await sendPasswordResetEmail(auth, fpassword);
+
+            Alert('check your email we send reset password link', 'success');
+        } catch (err) {
+            Alert(`${err.message}`, 'error')
+        }
+
+
+    }
+
+
     return (
         <>
             <section className='pt-32 bg-yellow-400 min-h-screen py-5'>
@@ -16,14 +68,14 @@ const Login = () => {
                                 </div>
 
 
-                                <form className='w-full px-1 mt-10'>
+                                <form onSubmit={loginForm} className='w-full px-1 mt-10'>
 
-                                    <div className="input-field mb-3">
+                                    <div onChange={loginemail} className="input-field mb-3">
                                         <input placeholder='Email' className='p-4 w-full h-12 outline-none rounded-sm placeholder:text-sm bg-slate-300 bg-opacity-30 font-semibold text-gray-600' type="email" name="" required />
                                     </div>
 
                                     <div className="input-field relative mb-3  bg-opacity-30 w-full h-12 ">
-                                        <input placeholder='password' className='bg-slate-300 w-full h-full bg-opacity-30 p-4 text-gray-600 font-semibold outline-none rounded-sm placeholder:text-sm' type={`${pshowicon ? "text" : "password"}`} name="" required />
+                                        <input onChange={passwordlogin} placeholder='password' className='bg-slate-300 w-full h-full bg-opacity-30 p-4 text-gray-600 font-semibold outline-none rounded-sm placeholder:text-sm' type={`${pshowicon ? "text" : "password"}`} name="" required />
                                         <div onClick={() => setpShowicon(!pshowicon)} className="password-icon cursor-pointer absolute right-5 text-gray-600 top-1/2 -translate-y-1/2">
                                             <i className={`bx ${!pshowicon ? 'bx-show' : 'bx-hide'} text-xl`}></i>
                                         </div>
@@ -32,13 +84,31 @@ const Login = () => {
 
                                     <div className="input-field">
 
-                                        <button type='submit' className='mt-3 disabled:bg-opacity-75 disabled:cursor-not-allowed cursor-pointer font-semibold w-full h-12 outline-none rounded-sm placeholder:text-sm bg-yellow-400   text-white'>Login</button>
+                                        <button disabled={spinner} type='submit' className='mt-3 disabled:bg-opacity-75 disabled:cursor-not-allowed cursor-pointer font-semibold w-full h-12 outline-none rounded-sm placeholder:text-sm bg-yellow-400   text-white'>{spinner ? <i className='bx bx-loader-alt font-semibold animate-spin text-xl'></i> : 'Login'}</button>
                                     </div>
 
 
                                 </form>
 
+                                <div className="acount-link mt-2 text-center flex justify-between">
+                                    <div className='flex justify-between'>
+
+                                        <button onClick={() => setforget(!forget)} className='text-md font-semibold text-gray-700 underline'>Foget password?</button>
+                                        <Link className='text-yellow-500 text-md font-semibold capitalize underline ml-6' to="/registration">no acount?</Link>
+                                    </div>
+
+                                </div>
+                                <div className={`forget-div mb-3 mt-2 transition-all ${forget ? 'max-h-14' : 'max-h-0 overflow-hidden'} `}>
+
+
+                                    <input className='p-4 w-full h-11 outline-none rounded-sm placeholder:text-sm bg-slate-300 bg-opacity-30 font-semibold text-gray-600' type="email" name="" placeholder='email address' required onChange={forgetpassword} />
+
+                                    <button onClick={forgetPasswordbtn} className='mb-3 text-white rounded-sm text-sm shadow-sm px-2 mt-1 font-semibold capitalize h-9 bg-yellow-500'>reset now</button>
+
+
+                                </div>
                             </div>
+
 
                             <Sociallink></Sociallink>
 
