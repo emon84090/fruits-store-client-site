@@ -20,12 +20,20 @@ const Singleinventory = () => {
         e.preventDefault();
         setUpdate(!update);
 
+        if (inputqty < 1) {
+
+            Alert('enter valid input qty', 'error');
+            setUpspinner(false);
+            return;
+        }
         const fruitsqty = {
             id: _id,
             exist_qty: qty,
             qty: inputqty,
 
         }
+
+
         try {
             const { data } = await axios.put(`http://localhost:5000/updateqty`, fruitsqty);
             setUpspinner(false);
