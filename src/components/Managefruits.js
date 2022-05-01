@@ -34,7 +34,7 @@ const Managefruits = () => {
     }
     return (
         <>
-            <section className='pt-32'>
+            <section className='pt-32 bg-yellow-50 h-screen'>
                 <div className="container mx-auto px-2">
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

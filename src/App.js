@@ -8,6 +8,7 @@ import Login from './components/user-authentication/Login';
 import Registration from './components/user-authentication/Registration';
 import Singleinventory from './components/Singleinventory';
 import Managefruits from './components/Managefruits';
+import Addfruits from './Addfruits';
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
 
         <Route path='/inventory/:id' element={<Singleinventory></Singleinventory>}></Route>
         <Route path='/managefruits' element={<Managefruits></Managefruits>}></Route>
+        <Route path='/addfruits' element={<Addfruits></Addfruits>}></Route>
       </Routes>
 
 
