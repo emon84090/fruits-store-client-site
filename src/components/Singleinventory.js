@@ -87,12 +87,12 @@ const Singleinventory = () => {
         <>
 
             <section className='pt-28 '>
-                <div className="container mx-auto">
+                <div className="container mx-auto px-2">
                     <div className="singledata-all-content grid grid-cols-12 border border-gray-200">
-                        <div className="single-fruits-image flex justify-center col-span-7">
+                        <div className="single-fruits-image flex justify-center col-span-12 md:col-span-6 lg:col-span-7">
                             <img className='max-h-80' src={image} alt="" />
                         </div>
-                        <div className="single-fruits-discription border-l border-gray-200 p-10 col-span-5">
+                        <div className="single-fruits-discription border-l border-gray-200 p-10 col-span-12 md:col-span-6 lg:col-span-5">
                             <div className="fruits-information flex justify-between">
                                 <h3 className='text-3xl font-semibold  capitalize '>{name}</h3>
                                 <h3 className='text-2xl font-semibold'>${price}</h3>

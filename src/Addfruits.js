@@ -60,12 +60,10 @@ const Addfruits = () => {
             <section className='pt-32 bg-yellow-400 pb-5 min-h-screen'>
                 <div className="container mx-auto">
 
-                    <div className="fruits-add-all-content grid grid-cols-2 gap-5 px-2">
-                        <div className="fruits-add-content animate__animated animate__fadeInLeft rounded-md  p-8 mx-auto bg-white shadow-xl w-full">
+                    <div className="fruits-add-all-content grid grid-cols-1 md:grid-cols-2 gap-5 px-2">
+                        <div className="fruits-add-content animate__animated animate__fadeInLeft rounded-md  p-8 mx-auto bg-white shadow-xl w-full order-3 md:order-2">
                             <h2 className='text-center text-2xl font-semibold mb-4 capitalize'>Add fruits</h2>
                             <form onSubmit={submitForm}>
-
-
 
                                 <div className="input-field mb-3">
                                     <input onChange={handleinput} placeholder='enter fruits photo url' className='p-4 w-full h-12 outline-none rounded-sm placeholder:capitalize placeholder:text-sm bg-slate-300 bg-opacity-30 font-semibold text-gray-600' type="text" name="image" required />
@@ -93,7 +91,7 @@ const Addfruits = () => {
                             </form>
                         </div>
 
-                        <div className="fruirts-right">
+                        <div className="fruirts-right order-2">
                             <img className=' object-cover' src="https://i.ibb.co/2Z4fKNt/Screenshot-13-removebg-preview.png" alt="" />
 
                         </div>
