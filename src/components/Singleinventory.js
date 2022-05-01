@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Alert from './Alert';
 
 const Singleinventory = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [singleData, setsingleData] = useState([]);
     const [inputqty, setinputQty] = useState(1);
     const [upspinner, setUpspinner] = useState(false);
@@ -92,7 +93,7 @@ const Singleinventory = () => {
                         <div className="single-fruits-image flex justify-center col-span-12 md:col-span-6 lg:col-span-7">
                             <img className='max-h-80' src={image} alt="" />
                         </div>
-                        <div className="single-fruits-discription border-l border-gray-200 p-10 col-span-12 md:col-span-6 lg:col-span-5">
+                        <div className="single-fruits-discription border-l border-gray-200 p-6 col-span-12 md:col-span-6 lg:col-span-5">
                             <div className="fruits-information flex justify-between">
                                 <h3 className='text-3xl font-semibold  capitalize '>{name}</h3>
                                 <h3 className='text-2xl font-semibold'>${price}</h3>
@@ -124,7 +125,10 @@ const Singleinventory = () => {
                                     </button>
                                 </form>
                             </div>
-                            <div className="delivery-btn flex justify-end">
+                            <div className="delivery-btn flex justify-between mt-8">
+                                <Link to="/managefruits"><button className='block bg-yellow-500 rounded-md mt-1 disabled:cursor-not-allowed  text-white font-semibold w-32 py-3 '>Manage Items
+                                </button></Link>
+
                                 <button disabled={despinner} onClick={decreaseqty} className='block bg-red-500 rounded-md mt-1 disabled:cursor-not-allowed  text-white font-semibold w-32 py-3 '>Deliveryed
                                     {despinner && <i className='bx bx-loader-alt text-sm animate-spin ml-1'></i>}
                                 </button>

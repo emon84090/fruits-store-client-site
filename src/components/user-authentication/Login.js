@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -36,8 +37,14 @@ const Login = () => {
         try {
             const { user } = await signInWithEmailAndPassword(auth, loginmail, loginpassword);
             setspinner(false);
-            Alert('Login success', 'success');
-            navigate(from, { replace: true });
+            const email = user?.email;
+            if (email) {
+                const { data } = await axios.post('http://localhost:5000/login', { email });
+                localStorage.setItem('accesstoken', data.accesstoken)
+                Alert('Login success', 'success');
+                navigate(from, { replace: true });
+            }
+
         } catch (err) {
             setspinner(false);
             Alert(`${err.message}`, 'error')

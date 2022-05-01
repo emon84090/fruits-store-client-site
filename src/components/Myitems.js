@@ -4,15 +4,26 @@ import Showmyitems from './Showmyitems';
 import useFirebaseauth from './user-authentication/useFirebaseauth';
 
 const Myitems = () => {
-    const { user } = useFirebaseauth();
+    const { user, logOut } = useFirebaseauth();
     const [myfruitsdata, setmyFruitsdata] = useState([]);
 
     useEffect(() => {
         const getOrder = async () => {
             if (user.email) {
                 const email = user.email;
-                const { data } = await axios.get(`http://localhost:5000/fruits?email=${email}`)
-                setmyFruitsdata(data)
+                try {
+                    const { data } = await axios.get(`http://localhost:5000/fruits?email=${email}`, {
+                        headers: {
+                            authorization: `bearer ${localStorage.getItem('accesstoken')}`
+                        }
+                    })
+                    setmyFruitsdata(data)
+                } catch (err) {
+                    if (err.response.status === 403 || err.response.status === 401) {
+                        logOut()
+                    }
+                }
+
             }
 
         }
@@ -49,6 +60,7 @@ const Myitems = () => {
                                 </tr>
                             </thead>
                             <tbody>
+                                {!myfruitsdata.length && <p className='text-center text-md font-semibold py-3'>No Items Found</p>}
                                 {myfruitsdata.map((val) => <Showmyitems data={val} key={val._id}></Showmyitems>)}
                             </tbody>
                         </table>

@@ -8,7 +8,7 @@ const Managefruits = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios.get('http://localhost:5000/fruits');
+            const { data } = await axios.get('http://localhost:5000/allfruits');
             setFruitstable(data)
         }
         getData();
