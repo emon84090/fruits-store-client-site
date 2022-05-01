@@ -51,7 +51,7 @@ const Header = () => {
                                         className={({ isActive }) => (`font-semibold text-md capitalize ${isActive ? "text-yellow-500" : ""}`)}
                                         to='/home'
                                     >
-                                        Blog
+                                        My Items
                                     </NavLink></li>
                                     <li><NavLink
                                         className={({ isActive }) => (`font-semibold text-md capitalize ${isActive ? "text-yellow-500" : ""}`)}
