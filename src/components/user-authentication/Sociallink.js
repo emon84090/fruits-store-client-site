@@ -1,16 +1,22 @@
 import React from 'react';
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import auth from './firebaseconfig';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Alert from '../Alert';
 
 const Sociallink = () => {
     const provider = new GoogleAuthProvider();
+    const navigate = useNavigate()
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     const siginwithgoogle = async () => {
         try {
             const { user } = await signInWithPopup(auth, provider);
-            console.log(user);
+            navigate(from, { replace: true });
+
         } catch (err) {
-            alert(err.message)
+            Alert(`${err.message}`, 'error')
         }
 
 

@@ -2,10 +2,14 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Alert from './components/Alert';
+import useFirebaseauth from './components/user-authentication/useFirebaseauth';
 
 const Addfruits = () => {
+    const { user } = useFirebaseauth();
+
     const navigate = useNavigate();
     const [addspinner, setAddspinner] = useState(false);
+
     const [fruitsinfo, setFruitsinfo] = useState({
         image: '',
         name: '',
@@ -25,9 +29,20 @@ const Addfruits = () => {
     const submitForm = async (e) => {
         setAddspinner(true);
         e.preventDefault();
+        const fruitsdata = {
+            email: user.email,
+            image: fruitsinfo.image,
+            name: fruitsinfo.name,
+            price: fruitsinfo.price,
+            qty: fruitsinfo.qty,
+            discription: fruitsinfo.discription,
+            supply_name: fruitsinfo.supply_name,
+            supply_image: fruitsinfo.supply_image
+        }
+
 
         try {
-            const { data } = await axios.post(`http://localhost:5000/addfoods`, fruitsinfo);
+            const { data } = await axios.post(`http://localhost:5000/addfoods`, fruitsdata);
             console.log(data);
             setAddspinner(false);
             Alert('food added success', 'success');
@@ -49,6 +64,9 @@ const Addfruits = () => {
                         <div className="fruits-add-content animate__animated animate__fadeInLeft rounded-md  p-8 mx-auto bg-white shadow-xl w-full">
                             <h2 className='text-center text-2xl font-semibold mb-4 capitalize'>Add fruits</h2>
                             <form onSubmit={submitForm}>
+
+
+
                                 <div className="input-field mb-3">
                                     <input onChange={handleinput} placeholder='enter fruits photo url' className='p-4 w-full h-12 outline-none rounded-sm placeholder:capitalize placeholder:text-sm bg-slate-300 bg-opacity-30 font-semibold text-gray-600' type="text" name="image" required />
                                 </div>
@@ -71,7 +89,7 @@ const Addfruits = () => {
                                 <div className="input-field mb-3">
                                     <input onChange={handleinput} placeholder='supplyer photo url' className='p-4 w-full h-12 outline-none rounded-sm placeholder:capitalize placeholder:text-sm bg-slate-300 bg-opacity-30 font-semibold text-gray-600' type="text" name="supply_image" required />
                                 </div>
-                                <button type="submit" class="mt-3 focus:outline-none capitalize text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm w-24 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Add fruits  {addspinner && <i className='bx bx-loader-alt text-sm animate-spin ml-1'></i>}</button>
+                                <button type="submit" className="mt-3 focus:outline-none capitalize text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm w-24 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">Add fruits  {addspinner && <i className='bx bx-loader-alt text-sm animate-spin ml-1'></i>}</button>
                             </form>
                         </div>
 

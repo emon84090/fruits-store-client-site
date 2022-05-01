@@ -1,6 +1,6 @@
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Alert from '../Alert';
 import auth from './firebaseconfig';
 import Sociallink from './Sociallink';
@@ -26,6 +26,9 @@ const Login = () => {
         setloginpassword(e.target.value)
     }
 
+    const navigate = useNavigate()
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     const loginForm = async (e) => {
         e.preventDefault();
@@ -34,6 +37,7 @@ const Login = () => {
             const { user } = await signInWithEmailAndPassword(auth, loginmail, loginpassword);
             setspinner(false);
             Alert('Login success', 'success');
+            navigate(from, { replace: true });
         } catch (err) {
             setspinner(false);
             Alert(`${err.message}`, 'error')

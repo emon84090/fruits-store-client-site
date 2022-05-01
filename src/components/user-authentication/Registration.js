@@ -1,12 +1,13 @@
-import { async } from '@firebase/util';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Alert from '../Alert';
 import auth from './firebaseconfig';
 import Sociallink from './Sociallink';
 
 const Registration = () => {
+    const navigate = useNavigate();
     const [pshowicon, setpShowicon] = useState(false);
     const [cpshowicon, setcpShowicon] = useState(false);
     const [spinner, setspinner] = useState(false);
@@ -84,8 +85,14 @@ const Registration = () => {
 
                 try {
                     const { user } = await createUserWithEmailAndPassword(auth, email.value, password.value);
-                    setspinner(false);
-                    Alert('Sign up Success', 'success');
+
+                    if (user) {
+                        await sendEmailVerification(auth.currentUser);
+                        setspinner(false);
+                        navigate('/login')
+                        Alert('Sign up Success,chek your email for active your acount', 'success');
+                    }
+
                 } catch (err) {
                     setspinner(false);
                     Alert(`${err.message}`, 'error')
