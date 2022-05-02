@@ -12,6 +12,7 @@ import Addfruits from './Addfruits';
 import Privateroute from './components/user-authentication/Privateroute';
 import Myitems from './components/Myitems';
 import Footer from './components/Footer';
+import PageNotfound from './components/PageNotfound';
 
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/registration' element={<Registration></Registration>}></Route>
         <Route path='/myitems' element={<Myitems></Myitems>}></Route>
-
+        <Route path='*' element={<PageNotfound></PageNotfound>}></Route>
         <Route path='/inventory/:id' element={
           <Privateroute><Singleinventory></Singleinventory></Privateroute>
         }></Route>

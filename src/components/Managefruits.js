@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Alert from './Alert';
 import Showmanagefruites from './Showmanagefruites';
 
@@ -34,8 +35,16 @@ const Managefruits = () => {
     }
     return (
         <>
-            <section className='pt-32 bg-yellow-50 h-screen'>
+            <section className='pt-32 bg-yellow-50 min-h-screen py-5'>
                 <div className="container mx-auto px-2">
+                    <div className="add-fruits">
+                        <Link to="/addfruits">
+                            <button type="button" class="capitalize  font-semibold py-2.5 px-5 mr-2 text-sm  text-gray-900 bg-white rounded-lg border  hover:text-yellow-500  0  inline-flex items-center">
+                                add fruits
+                                <i className='bx bx-plus ml-1'></i>
+                            </button>
+                        </Link>
+                    </div>
                     <h2 className='text-center font-bold text-2xl pb-5 text-gray-700'>All Fruits</h2>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">

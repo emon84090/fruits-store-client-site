@@ -27,6 +27,7 @@ const Singleinventory = () => {
             setUpspinner(false);
             return;
         }
+
         const fruitsqty = {
             id: _id,
             exist_qty: qty,
@@ -47,13 +48,17 @@ const Singleinventory = () => {
 
         }
 
-
-
     }
 
     const decreaseqty = async () => {
         setDespinner(true);
         setDelete(!deletes)
+
+        if (qty <= 1) {
+            Alert('quantity invaild', 'error');
+            setDespinner(false);
+            return;
+        }
         const fruitsqty = {
             id: _id,
             exist_qty: qty,
@@ -117,7 +122,7 @@ const Singleinventory = () => {
                             <div className="fruites-manage-system mt-4">
                                 <p className='text-sm'>Add Quantity</p>
                                 <form onSubmit={addQuantity}>
-                                    <input onChange={(e) => setinputQty(e.target.value)} className='bg-slate-200 font-semibold text-gray-800 mt-1 p-3 h-10 rounded-md outline-none' defaultValue="1" type="number" name="" id="" />
+                                    <input onChange={(e) => setinputQty(e.target.value)} className='bg-slate-200 font-semibold text-gray-800 mt-1 p-3 h-10 rounded-md outline-none' value={inputqty} type="number" name="" id="" />
 
                                     <button disabled={upspinner} type="submit" className=" text-white block mt-2 disabled:cursor-not-allowed bg-yellow-500   font-medium rounded-md text-sm w-20 py-2.5 text-center mr-2  items-center">
                                         Add
