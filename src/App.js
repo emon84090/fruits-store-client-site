@@ -11,6 +11,7 @@ import Managefruits from './components/Managefruits';
 import Addfruits from './Addfruits';
 import Privateroute from './components/user-authentication/Privateroute';
 import Myitems from './components/Myitems';
+import Footer from './components/Footer';
 
 
 const App = () => {
@@ -41,7 +42,7 @@ const App = () => {
         }></Route>
       </Routes>
 
-
+      <Footer></Footer>
     </>
   );
 };
