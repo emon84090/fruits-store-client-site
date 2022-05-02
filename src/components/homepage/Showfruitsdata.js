@@ -5,7 +5,7 @@ const Showfruitsdata = ({ data }) => {
     const { name, price, image, qty, discription, supply_name, supply_image, _id } = data;
     return (
         <>
-            <div className="fruits-item shadow-xl rounded-md p-5 ">
+            <div data-aos="fade-up" className="fruits-item shadow-xl rounded-md p-5 ">
                 <div className="fruits-image">
                     <img className='max-h-64' src={image} alt="" />
                 </div>

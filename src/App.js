@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './components/Header';
 
 import 'animate.css';
@@ -13,9 +13,16 @@ import Privateroute from './components/user-authentication/Privateroute';
 import Myitems from './components/Myitems';
 import Footer from './components/Footer';
 import PageNotfound from './components/PageNotfound';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 const App = () => {
+  useEffect(() => {
+    AOS.init({
+      offset: 300
+    });
+  }, []);
   return (
     <>
       <Header></Header>
