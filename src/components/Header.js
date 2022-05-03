@@ -32,9 +32,9 @@ const Header = () => {
                                     </NavLink></li>
                                     <li><NavLink
                                         className={({ isActive }) => (`font-semibold text-md capitalize ${isActive ? "text-yellow-500" : ""}`)}
-                                        to='/home'
+                                        to='/blog'
                                     >
-                                        About
+                                        Blog
                                     </NavLink></li>
                                     {user &&
                                         <>
@@ -59,12 +59,7 @@ const Header = () => {
                                         </>
                                     }
 
-                                    <li><NavLink
-                                        className={({ isActive }) => (`font-semibold text-md capitalize ${isActive ? "text-yellow-500" : ""}`)}
-                                        to='/home'
-                                    >
-                                        Contact
-                                    </NavLink></li>
+
                                 </ul>
 
                             </div>

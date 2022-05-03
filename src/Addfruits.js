@@ -42,7 +42,7 @@ const Addfruits = () => {
 
 
         try {
-            const { data } = await axios.post(`http://localhost:5000/addfoods`, fruitsdata);
+            const { data } = await axios.post(`https://infinite-falls-08538.herokuapp.com/addfoods`, fruitsdata);
             console.log(data);
             setAddspinner(false);
             Alert('food added success', 'success');

@@ -8,7 +8,7 @@ const Fruitshome = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios.get('http://localhost:5000/allfruits');
+            const { data } = await axios.get('https://infinite-falls-08538.herokuapp.com/allfruits');
             setFruitsdata(data)
         }
         getData();

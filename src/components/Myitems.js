@@ -12,7 +12,7 @@ const Myitems = () => {
             if (user.email) {
                 const email = user.email;
                 try {
-                    const { data } = await axios.get(`http://localhost:5000/fruits?email=${email}`, {
+                    const { data } = await axios.get(`https://infinite-falls-08538.herokuapp.com/fruits?email=${email}`, {
                         headers: {
                             authorization: `bearer ${localStorage.getItem('accesstoken')}`
                         }
@@ -32,7 +32,7 @@ const Myitems = () => {
     }, [user.email])
     return (
         <>
-            <section className='pt-32 bg-yellow-50 h-screen'>
+            <section className='pt-32 bg-yellow-50 min-h-screen py-5'>
                 <div className="container mx-auto px-2">
                     <h2 className='text-center font-bold text-2xl pb-5 text-gray-700'>My added Fruits</h2>
                     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

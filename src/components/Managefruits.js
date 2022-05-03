@@ -9,7 +9,7 @@ const Managefruits = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios.get('http://localhost:5000/allfruits');
+            const { data } = await axios.get('https://infinite-falls-08538.herokuapp.com/allfruits');
             setFruitstable(data)
         }
         getData();
@@ -19,7 +19,7 @@ const Managefruits = () => {
 
         if (window.confirm('are you sure,want to delete')) {
             try {
-                const { data } = axios.delete(`http://localhost:5000/delete/${id}`);
+                const { data } = axios.delete(`https://infinite-falls-08538.herokuapp.com/delete/${id}`);
                 Alert('data delete success', 'success');
 
                 const filterData = fruitstable.filter((e) => e._id !== id);

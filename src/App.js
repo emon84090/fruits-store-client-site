@@ -15,9 +15,11 @@ import Footer from './components/Footer';
 import PageNotfound from './components/PageNotfound';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Blog from './components/Blog';
 
 
 const App = () => {
+
   useEffect(() => {
     AOS.init({
       offset: 300
@@ -29,6 +31,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Homepage></Homepage>}></Route>
         <Route path='/home' element={<Homepage></Homepage>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/registration' element={<Registration></Registration>}></Route>
         <Route path='/myitems' element={<Myitems></Myitems>}></Route>

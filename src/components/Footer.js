@@ -71,7 +71,7 @@ const Footer = () => {
                             <ul className='md:flex'>
                                 <li className='mr-4'>Privacy Policy</li>
                                 <li className='mr-4'>Terms Of Use</li>
-                                <li className='mr-4'>Pricing</li>
+
                             </ul>
                         </div>
 

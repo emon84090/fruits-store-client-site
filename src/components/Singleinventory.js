@@ -7,19 +7,21 @@ const Singleinventory = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [singleData, setsingleData] = useState([]);
+
     const [inputqty, setinputQty] = useState(1);
+
+    const [updateqty, setUpdateqty] = useState(0);
+
+
     const [upspinner, setUpspinner] = useState(false);
     const [despinner, setDespinner] = useState(false);
-
-    const [update, setUpdate] = useState(false);
-    const [deletes, setDelete] = useState(false);
 
     const { name, price, image, qty, discription, supply_name, supply_image, _id } = singleData;
 
     const addQuantity = async (e) => {
+
         setUpspinner(true);
         e.preventDefault();
-        setUpdate(!update);
 
         if (inputqty < 1) {
 
@@ -28,13 +30,14 @@ const Singleinventory = () => {
             return;
         }
 
+        const newquan = Number(qty) + Number(inputqty);
+        setUpdateqty(newquan);
+
         const fruitsqty = {
             id: _id,
-            exist_qty: qty,
-            qty: inputqty,
+            updateqty: newquan
 
         }
-
 
         try {
             const { data } = await axios.put(`http://localhost:5000/updateqty`, fruitsqty);
@@ -50,24 +53,28 @@ const Singleinventory = () => {
 
     }
 
+
     const decreaseqty = async () => {
         setDespinner(true);
-        setDelete(!deletes)
 
         if (qty <= 1) {
             Alert('quantity invaild', 'error');
             setDespinner(false);
             return;
         }
+        const discreasequan = Number(qty) - 1;
+        setUpdateqty(discreasequan);
         const fruitsqty = {
             id: _id,
-            exist_qty: qty,
+            updateqty: discreasequan,
 
         }
         try {
-            const { data } = await axios.put(`http://localhost:5000/decreaseqty`, fruitsqty);
+            const { data } = await axios.put(`http://localhost:5000/updateqty`, fruitsqty);
+
             setDespinner(false);
             Alert('delivered success', 'success');
+
         } catch (err) {
             setDespinner(false);
             Alert('delivered faild', 'error');
@@ -76,23 +83,24 @@ const Singleinventory = () => {
     }
 
 
+
     // get single food data
     useEffect(() => {
         const getSingledata = async () => {
-            const { data } = await axios.get(`http://localhost:5000/fruit/${id}`);
+            const { data } = await axios.get(`https://infinite-falls-08538.herokuapp.com/fruit/${id}`);
             setsingleData(data);
         }
         getSingledata();
 
-    }, [id, update, deletes])
-
+    }, [id, updateqty])
+    console.log(updateqty);
     // get single food data
 
 
     return (
         <>
 
-            <section className='pt-28 '>
+            <section className='pt-32 py-7 min-h-screen'>
                 <div className="container mx-auto px-2">
                     <div className="singledata-all-content grid grid-cols-12 border border-gray-200">
                         <div className="single-fruits-image flex justify-center col-span-12 md:col-span-6 lg:col-span-7">
@@ -122,7 +130,7 @@ const Singleinventory = () => {
                             <div className="fruites-manage-system mt-4">
                                 <p className='text-sm'>Add Quantity</p>
                                 <form onSubmit={addQuantity}>
-                                    <input onChange={(e) => setinputQty(e.target.value)} className='bg-slate-200 font-semibold text-gray-800 mt-1 p-3 h-10 rounded-md outline-none' value={inputqty} type="number" name="" id="" />
+                                    <input onChange={(e) => setinputQty(e.target.value)} className='bg-slate-200 font-semibold text-gray-800 mt-1 p-3 h-10 rounded-md outline-none' value={inputqty} type="number" name="myinputqty" id="" />
 
                                     <button disabled={upspinner} type="submit" className=" text-white block mt-2 disabled:cursor-not-allowed bg-yellow-500   font-medium rounded-md text-sm w-20 py-2.5 text-center mr-2  items-center">
                                         Add
