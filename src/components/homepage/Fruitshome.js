@@ -22,10 +22,17 @@ const Fruitshome = () => {
             <section id='fruits' className='py-10 mt-10 '>
                 <div className="container mx-auto px-2">
                     <h1 className='text-2xl font-bold text-center mb-5  md:text-3xl mt-3'>Fruirts</h1>
-                    <div className="fruits-all-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                        {fruitsdata.slice(0, 6).map((val) => <Showfruitsdata data={val} key={val._id} ></Showfruitsdata>)}
+                    {fruitsdata &&
+                        <>
+                            <div className="fruits-all-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                                {fruitsdata.slice(0, 6).map((val) => <Showfruitsdata data={val} key={val._id} ></Showfruitsdata>)}
 
-                    </div>
+                            </div>
+                        </>
+
+
+                    }
+
 
                 </div>
 

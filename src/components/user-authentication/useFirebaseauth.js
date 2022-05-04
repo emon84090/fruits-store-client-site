@@ -8,6 +8,7 @@ const useFirebaseauth = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({})
     useEffect(() => {
+
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
@@ -18,12 +19,15 @@ const useFirebaseauth = () => {
     }, [])
 
     const logOut = () => {
-        signOut(auth).then(() => {
-            Alert('logOut success', 'success');
-            navigate('/')
-        }).catch((error) => {
-            Alert('something went wrong', 'error');
-        });
+        if (window.confirm('are you sure want to logout')) {
+            signOut(auth).then(() => {
+                Alert('logOut success', 'success');
+                navigate('/')
+            }).catch((error) => {
+                Alert('something went wrong', 'error');
+            });
+        }
+
 
     }
 

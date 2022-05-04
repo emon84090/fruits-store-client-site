@@ -7,10 +7,10 @@ const Story = () => {
                 <h1 className='text-2xl font-bold text-center mb-16  md:text-3xl mt-3'>Our Story</h1>
                 <div className="container mx-auto px-3">
                     <div className="story-all-content grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-                        <div data-aos="fade-left" className="story-left flex justify-center">
+                        <div data-aos="fade-down" className="story-left flex justify-center">
                             <img className='max-h-96 rounded-md' src="https://i.ibb.co/ChMDypL/bg2.jpg" alt="" />
                         </div>
-                        <div data-aos="fade-right" className="story-right">
+                        <div data-aos="fade-up" className="story-right">
                             <h2 className='text-2xl font-extrabold xs:text-2xl sm:text-4xl md:text-4xl text-gray-800 mt-3'>Healthy,tasty & Fresh Organic Fruits</h2>
                             <p className='mt-7 text-md text-gray-700'>Fruits are an excellent source of essential vitamins and minerals, and they are high in fiber. Fruits also provide a wide range of health-boosting antioxidants, including flavonoids. Eating a diet high in fruits and vegetables can reduce a person's risk of developing heart disease, cancer, inflammation, and diabetes</p>
 

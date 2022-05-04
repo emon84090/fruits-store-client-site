@@ -10,8 +10,7 @@ const Singleinventory = () => {
 
     const [inputqty, setinputQty] = useState(1);
 
-    const [updateqty, setUpdateqty] = useState(0);
-
+    const [count, setCount] = useState(0);
 
     const [upspinner, setUpspinner] = useState(false);
     const [despinner, setDespinner] = useState(false);
@@ -31,7 +30,7 @@ const Singleinventory = () => {
         }
 
         const newquan = Number(qty) + Number(inputqty);
-        setUpdateqty(newquan);
+
 
         const fruitsqty = {
             id: _id,
@@ -40,10 +39,10 @@ const Singleinventory = () => {
         }
 
         try {
-            const { data } = await axios.put(`http://localhost:5000/updateqty`, fruitsqty);
+            const { data } = await axios.put(`https://infinite-falls-08538.herokuapp.com/updateqty`, fruitsqty);
             setUpspinner(false);
             Alert('Quantity added successfully', 'success');
-
+            setCount(count + 1)
         }
         catch (err) {
             setUpspinner(false)
@@ -63,17 +62,18 @@ const Singleinventory = () => {
             return;
         }
         const discreasequan = Number(qty) - 1;
-        setUpdateqty(discreasequan);
+
         const fruitsqty = {
             id: _id,
             updateqty: discreasequan,
 
         }
         try {
-            const { data } = await axios.put(`http://localhost:5000/updateqty`, fruitsqty);
+            const { data } = await axios.put(`https://infinite-falls-08538.herokuapp.com/updateqty`, fruitsqty);
 
             setDespinner(false);
             Alert('delivered success', 'success');
+            setCount(count + 1)
 
         } catch (err) {
             setDespinner(false);
@@ -92,8 +92,8 @@ const Singleinventory = () => {
         }
         getSingledata();
 
-    }, [id, updateqty])
-    console.log(updateqty);
+    }, [id, count])
+
     // get single food data
 
 
