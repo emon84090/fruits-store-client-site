@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Alert from '../Alert';
+import Pagetitle from '../Pagetitle';
 import auth from './firebaseconfig';
 import Sociallink from './Sociallink';
 
@@ -106,7 +107,7 @@ const Registration = () => {
 
     return (
         <>
-
+            <Pagetitle title="Registration"></Pagetitle>
             <section className='pt-32 bg-yellow-400 min-h-screen py-10'>
                 <div className="container mx-auto">
                     <div className="registration-all-content grid px-3 grid-cols-1 md:grid-cols-2 gap-5">

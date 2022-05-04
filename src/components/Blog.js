@@ -1,8 +1,12 @@
 import React from 'react';
+import Pagetitle from './Pagetitle';
 
 const Blog = () => {
     return (
+
         <>
+            <Pagetitle title="blog"></Pagetitle>
+
             <section className='pt-32 py-5 min-h-screen'>
                 <div className="container mx-auto px-3">
                     <div className="blog-all-content grid gap-5 grid-cols-1 md:grid-cols-3">

@@ -18,7 +18,6 @@ const Singleinventory = () => {
     const { name, price, image, qty, discription, supply_name, supply_image, _id } = singleData;
 
     const addQuantity = async (e) => {
-
         setUpspinner(true);
         e.preventDefault();
 
@@ -30,7 +29,6 @@ const Singleinventory = () => {
         }
 
         const newquan = Number(qty) + Number(inputqty);
-
 
         const fruitsqty = {
             id: _id,

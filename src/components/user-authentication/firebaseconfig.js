@@ -3,15 +3,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBqTrJEjeVLPCGpulo63d7i7X7w3D0Z3gc",
-    authDomain: "fruits-store-4b19b.firebaseapp.com",
-    projectId: "fruits-store-4b19b",
-    storageBucket: "fruits-store-4b19b.appspot.com",
-    messagingSenderId: "577439294265",
-    appId: "1:577439294265:web:7a9b7d054a832d2b93fee8"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 

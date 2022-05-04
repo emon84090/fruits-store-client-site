@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Alert from './components/Alert';
+import Pagetitle from './components/Pagetitle';
 import useFirebaseauth from './components/user-authentication/useFirebaseauth';
 
 const Addfruits = () => {
@@ -57,6 +58,7 @@ const Addfruits = () => {
 
     return (
         <>
+            <Pagetitle title="add fruits"></Pagetitle>
             <section className='pt-32 bg-yellow-400 pb-5 min-h-screen'>
                 <div className="container mx-auto">
 

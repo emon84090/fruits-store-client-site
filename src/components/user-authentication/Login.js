@@ -3,6 +3,7 @@ import { sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/aut
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Alert from '../Alert';
+import Pagetitle from '../Pagetitle';
 import auth from './firebaseconfig';
 import Sociallink from './Sociallink';
 
@@ -68,6 +69,7 @@ const Login = () => {
 
     return (
         <>
+            <Pagetitle title="Login"></Pagetitle>
             <section className='pt-32 bg-yellow-400 min-h-screen py-5'>
                 <div className="container mx-auto">
                     <div className="login-all-content px-3 grid grid-cols-1 md:grid-cols-2 gap-5">

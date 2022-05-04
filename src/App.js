@@ -25,6 +25,7 @@ const App = () => {
       offset: 300
     });
   }, []);
+
   return (
     <>
       <Header></Header>

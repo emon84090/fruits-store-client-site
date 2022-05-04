@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Alert from './Alert';
+import Pagetitle from './Pagetitle';
 import Showmanagefruites from './Showmanagefruites';
 
 const Managefruits = () => {
@@ -35,6 +36,7 @@ const Managefruits = () => {
     }
     return (
         <>
+            <Pagetitle title="manage fruits"></Pagetitle>
             <section className='pt-32 bg-yellow-50 min-h-screen py-5'>
                 <div className="container mx-auto px-2">
                     <div className="add-fruits">
