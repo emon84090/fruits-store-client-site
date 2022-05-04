@@ -39,7 +39,7 @@ const Login = () => {
             setspinner(false);
             const email = user?.email;
             if (email) {
-                const { data } = await axios.post('http://localhost:5000/login', { email });
+                const { data } = await axios.post('https://infinite-falls-08538.herokuapp.com/login', { email });
                 localStorage.setItem('accesstoken', data.accesstoken)
                 Alert('Login success', 'success');
                 navigate(from, { replace: true });
@@ -70,7 +70,7 @@ const Login = () => {
         <>
             <section className='pt-32 bg-yellow-400 min-h-screen py-5'>
                 <div className="container mx-auto">
-                    <div className="login-all-content grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="login-all-content px-3 grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div className="login order-3 md:order-2 animate__animated animate__fadeInLeft max-w-md mx-auto bg-white w-full py-10 rounded-md">
 
                             <div className="login-content pb-4  flex items-center justify-center flex-col   px-1 md:px-10">

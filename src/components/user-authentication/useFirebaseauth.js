@@ -19,14 +19,14 @@ const useFirebaseauth = () => {
     }, [])
 
     const logOut = () => {
-        if (window.confirm('are you sure want to logout')) {
-            signOut(auth).then(() => {
-                Alert('logOut success', 'success');
-                navigate('/')
-            }).catch((error) => {
-                Alert('something went wrong', 'error');
-            });
-        }
+
+        signOut(auth).then(() => {
+            Alert('logOut success', 'success');
+            navigate('/')
+        }).catch((error) => {
+            Alert('something went wrong', 'error');
+        });
+
 
 
     }

@@ -3,7 +3,7 @@ import React from 'react';
 const Banner = () => {
     return (
         <>
-            <section id='banner' className='w-full relative min-h-screen py-10 pt-32 bg-yellow-400 '>
+            <section id='banner' className='w-full relative min-h-screen  pt-32 bg-yellow-400 '>
                 <div className="container mx-auto">
                     <div className="banner-all-content grid grid-cols-1 md:grid-cols-2 gap-5 px-3">
                         <div className="banner-left animate__animated animate__fadeInLeft">

@@ -39,7 +39,7 @@ const Managefruits = () => {
                 <div className="container mx-auto px-2">
                     <div className="add-fruits">
                         <Link to="/addfruits">
-                            <button type="button" class="capitalize  font-semibold py-2.5 px-5 mr-2 text-sm  text-gray-900 bg-white rounded-lg border  hover:text-yellow-500  0  inline-flex items-center">
+                            <button type="button" className="capitalize  font-semibold py-2.5 px-5 mr-2 text-sm  text-gray-900 bg-white rounded-lg border  hover:text-yellow-500  0  inline-flex items-center">
                                 add fruits
                                 <i className='bx bx-plus ml-1'></i>
                             </button>

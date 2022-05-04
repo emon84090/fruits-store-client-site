@@ -59,11 +59,14 @@ const Myitems = () => {
 
                                 </tr>
                             </thead>
+
                             <tbody>
-                                {!myfruitsdata.length && <p className='text-center text-md font-semibold py-3'>No Items Found</p>}
+
                                 {myfruitsdata.map((val) => <Showmyitems data={val} key={val._id}></Showmyitems>)}
                             </tbody>
+
                         </table>
+                        {!myfruitsdata.length && <p className='text-center text-md font-semibold py-3'>No Items Found</p>}
                     </div>
                 </div>
 
