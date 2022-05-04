@@ -10,8 +10,6 @@ const Singleinventory = () => {
 
     const [inputqty, setinputQty] = useState(1);
 
-    const [count, setCount] = useState(0);
-
     const [upspinner, setUpspinner] = useState(false);
     const [despinner, setDespinner] = useState(false);
 
@@ -40,7 +38,7 @@ const Singleinventory = () => {
             const { data } = await axios.put(`https://infinite-falls-08538.herokuapp.com/updateqty`, fruitsqty);
             setUpspinner(false);
             Alert('Quantity added successfully', 'success');
-            setCount(count + 1)
+
         }
         catch (err) {
             setUpspinner(false)
@@ -71,7 +69,7 @@ const Singleinventory = () => {
 
             setDespinner(false);
             Alert('delivered success', 'success');
-            setCount(count + 1)
+
 
         } catch (err) {
             setDespinner(false);
@@ -90,7 +88,7 @@ const Singleinventory = () => {
         }
         getSingledata();
 
-    }, [id, count])
+    }, [id, singleData])
 
     // get single food data
 
